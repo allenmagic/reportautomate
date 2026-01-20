@@ -1,0 +1,182 @@
+2025-04-08T12:20:03.966677+0800 - INFO - share_point.py:main:81 - 开始上传文件到 SharePoint...
+2025-04-08T12:20:04.887776+0800 - INFO - share_point.py:upload_file_to_sharepoint:31 - 获取的访问令牌: None
+2025-04-08T12:20:04.888433+0800 - INFO - share_point.py:upload_file_to_sharepoint:33 - 获取令牌失败: AADSTS50076: Due to a configuration change made by your administrator, or because you moved to a new location, you must use multi-factor authentication to access '00000003-0000-0ff1-ce00-000000000000'. Trace ID: 309f400e-f3e9-4e2a-9a0a-dc57f58f7900 Correlation ID: f91945f2-f35b-48e4-b6fb-5b6452dd558a Timestamp: 2025-04-08 04:20:04Z
+2025-04-08T12:20:04.888856+0800 - ERROR - share_point.py:main:88 - === 上传操作失败 ===
+2025-04-08T20:14:32.707752+0800 - INFO - share_point.py:main:122 - 开始SharePoint文件上传程序
+2025-04-08T20:14:32.719866+0800 - INFO - share_point.py:main:141 - 开始上传文件 '4412813 Citron PE Limited.pdf' 到 SharePoint...
+2025-04-08T20:14:32.720323+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:12 - 准备上传文件到SharePoint: 4412813 Citron PE Limited.pdf
+2025-04-08T20:14:32.720715+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:20 - 开始获取Microsoft Graph API的访问令牌
+2025-04-08T20:14:33.312042+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:33 - 成功获取访问令牌
+2025-04-08T20:14:33.312852+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:42 - 正在获取SharePoint站点信息: CPEHKOffice
+2025-04-08T20:14:33.925705+0800 - ERROR - share_point.py:upload_file_to_sharepoint_graph:47 - 获取站点信息失败: {"error":{"code":"accessDenied","message":"Access denied","innerError":{"date":"2025-04-08T12:14:33","request-id":"a9a86aed-bc21-4656-8c37-1da11b7e6672","client-request-id":"a9a86aed-bc21-4656-8c37-1da11b7e6672"}}}
+2025-04-08T20:14:33.926390+0800 - ERROR - share_point.py:main:158 - 上传过程失败
+2025-04-08T20:39:32.317863+0800 - INFO - share_point.py:main:122 - 开始SharePoint文件上传程序
+2025-04-08T20:39:32.330376+0800 - INFO - share_point.py:main:141 - 开始上传文件 '4412813 Citron PE Limited.pdf' 到 SharePoint...
+2025-04-08T20:39:32.331037+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:12 - 准备上传文件到SharePoint: 4412813 Citron PE Limited.pdf
+2025-04-08T20:39:32.331538+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:20 - 开始获取Microsoft Graph API的访问令牌
+2025-04-08T20:39:32.901499+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:33 - 成功获取访问令牌
+2025-04-08T20:39:32.902178+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:42 - 正在获取SharePoint站点信息: CPEHKOffice
+2025-04-08T20:39:33.557855+0800 - ERROR - share_point.py:upload_file_to_sharepoint_graph:47 - 获取站点信息失败: {"error":{"code":"accessDenied","message":"Access denied","innerError":{"date":"2025-04-08T12:39:33","request-id":"ca8febe4-745d-4a74-96a2-290ce6d27ad4","client-request-id":"ca8febe4-745d-4a74-96a2-290ce6d27ad4"}}}
+2025-04-08T20:39:33.558632+0800 - ERROR - share_point.py:main:158 - 上传过程失败
+2025-04-08T20:41:12.983190+0800 - INFO - share_point.py:main:151 - 开始SharePoint文件上传程序
+2025-04-08T20:41:12.985338+0800 - INFO - share_point.py:main:170 - 开始上传文件 '4412813 Citron PE Limited.pdf' 到 SharePoint...
+2025-04-08T20:41:12.985752+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:12 - 准备上传文件到SharePoint: 4412813 Citron PE Limited.pdf
+2025-04-08T20:41:12.986136+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:20 - 开始获取Microsoft Graph API的访问令牌
+2025-04-08T20:41:13.537541+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:33 - 成功获取访问令牌
+2025-04-08T20:41:13.538457+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:42 - 正在获取SharePoint站点信息: CPEHKOffice
+2025-04-08T20:41:14.268149+0800 - WARNING - share_point.py:upload_file_to_sharepoint_graph:51 - 通过站点路径获取站点信息失败: {"error":{"code":"accessDenied","message":"Access denied","innerError":{"date":"2025-04-08T12:41:14","request-id":"9fb90bdb-ccd7-40be-ae4a-20bfe5c6002c","client-request-id":"9fb90bdb-ccd7-40be-ae4a-20bfe5c6002c"}}}
+2025-04-08T20:41:14.682750+0800 - WARNING - share_point.py:upload_file_to_sharepoint_graph:60 - 通过主机名和相对路径获取站点信息失败，尝试列出所有站点
+2025-04-08T20:41:15.160381+0800 - ERROR - share_point.py:upload_file_to_sharepoint_graph:76 - 获取站点列表失败: {"error":{"code":"accessDenied","message":"Access denied","innerError":{"date":"2025-04-08T12:41:15","request-id":"db8a97e6-d4cb-4657-940b-3d1b932c987d","client-request-id":"db8a97e6-d4cb-4657-940b-3d1b932c987d"}}}
+2025-04-08T20:41:15.161574+0800 - ERROR - share_point.py:main:187 - 上传过程失败
+2025-04-08T20:54:51.029835+0800 - INFO - share_point.py:main:159 - 开始SharePoint文件上传程序
+2025-04-08T20:54:51.035537+0800 - INFO - share_point.py:main:178 - 开始上传文件 '4412813 Citron PE Limited.pdf' 到 SharePoint...
+2025-04-08T20:54:51.036033+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:12 - 准备上传文件到SharePoint: 4412813 Citron PE Limited.pdf
+2025-04-08T20:54:51.036402+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:20 - 开始获取Microsoft Graph API的访问令牌
+2025-04-08T20:54:51.568067+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:33 - 成功获取访问令牌
+2025-04-08T20:54:51.568732+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:42 - 正在获取SharePoint站点信息: CPEHKOffice
+2025-04-08T20:54:52.072070+0800 - ERROR - share_point.py:upload_file_to_sharepoint_graph:47 - 获取站点信息失败: {"error":{"code":"accessDenied","message":"Access denied","innerError":{"date":"2025-04-08T12:54:52","request-id":"1f74385a-62bd-4167-b673-e0f1595d0ebe","client-request-id":"1f74385a-62bd-4167-b673-e0f1595d0ebe"}}}
+2025-04-08T20:54:52.072773+0800 - ERROR - share_point.py:main:195 - 上传过程失败
+2025-04-08T20:56:35.470214+0800 - INFO - share_point.py:main:159 - 开始SharePoint文件上传程序
+2025-04-08T20:56:35.472553+0800 - INFO - share_point.py:main:178 - 开始上传文件 '4412813 Citron PE Limited.pdf' 到 SharePoint...
+2025-04-08T20:56:35.473008+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:12 - 准备上传文件到SharePoint: 4412813 Citron PE Limited.pdf
+2025-04-08T20:56:35.473367+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:20 - 开始获取Microsoft Graph API的访问令牌
+2025-04-08T20:56:36.055505+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:33 - 成功获取访问令牌
+2025-04-08T20:56:36.056621+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:42 - 正在获取SharePoint站点信息: CPEHKOffice
+2025-04-08T20:56:36.542728+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:53 - 成功获取站点ID: cpe2019.sharepoint.com,39fd3083-df14-41d4-bc98-767a4e86fde7,73658833-a614-4017-ac33-c80919fb732c
+2025-04-08T20:56:37.118870+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:69 - 找到文档库: 文档
+2025-04-08T20:56:37.120055+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:69 - 找到文档库: China_Pinnacle
+2025-04-08T20:56:37.120896+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:69 - 找到文档库: HKFinance
+2025-04-08T20:56:37.121616+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:69 - 找到文档库: Sun_backup
+2025-04-08T20:56:37.122191+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:69 - 找到文档库: HK_Office_Admin
+2025-04-08T20:56:37.123182+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:69 - 找到文档库: 资料共享
+2025-04-08T20:56:37.124339+0800 - ERROR - share_point.py:upload_file_to_sharepoint_graph:75 - 未找到默认文档库
+2025-04-08T20:56:37.126947+0800 - ERROR - share_point.py:main:195 - 上传过程失败
+2025-04-08T21:00:07.296211+0800 - INFO - share_point.py:main:159 - 开始SharePoint文件上传程序
+2025-04-08T21:00:07.298189+0800 - INFO - share_point.py:main:178 - 开始上传文件 '4412813 Citron PE Limited.pdf' 到 SharePoint...
+2025-04-08T21:00:07.298553+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:12 - 准备上传文件到SharePoint: 4412813 Citron PE Limited.pdf
+2025-04-08T21:00:07.298897+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:20 - 开始获取Microsoft Graph API的访问令牌
+2025-04-08T21:00:07.780916+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:33 - 成功获取访问令牌
+2025-04-08T21:00:07.781725+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:42 - 正在获取SharePoint站点信息: CPEHKOffice
+2025-04-08T21:00:08.217973+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:53 - 成功获取站点ID: cpe2019.sharepoint.com,39fd3083-df14-41d4-bc98-767a4e86fde7,73658833-a614-4017-ac33-c80919fb732c
+2025-04-08T21:00:08.840387+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:69 - 找到文档库: 文档
+2025-04-08T21:00:08.841074+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:69 - 找到文档库: China_Pinnacle
+2025-04-08T21:00:08.841636+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:69 - 找到文档库: HKFinance
+2025-04-08T21:00:08.842069+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:69 - 找到文档库: Sun_backup
+2025-04-08T21:00:08.842480+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:69 - 找到文档库: HK_Office_Admin
+2025-04-08T21:00:08.843035+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:69 - 找到文档库: 资料共享
+2025-04-08T21:00:08.843619+0800 - ERROR - share_point.py:upload_file_to_sharepoint_graph:75 - 未找到默认文档库
+2025-04-08T21:00:08.844204+0800 - ERROR - share_point.py:main:195 - 上传过程失败
+2025-04-08T21:04:13.752114+0800 - INFO - share_point.py:main:159 - 开始SharePoint文件上传程序
+2025-04-08T21:04:13.753851+0800 - INFO - share_point.py:main:178 - 开始上传文件 '4412813 Citron PE Limited.pdf' 到 SharePoint...
+2025-04-08T21:04:13.754222+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:12 - 准备上传文件到SharePoint: 4412813 Citron PE Limited.pdf
+2025-04-08T21:04:13.754513+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:20 - 开始获取Microsoft Graph API的访问令牌
+2025-04-08T21:04:14.259141+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:33 - 成功获取访问令牌
+2025-04-08T21:04:14.259864+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:42 - 正在获取SharePoint站点信息: CPEHKOffice
+2025-04-08T21:04:14.708323+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:53 - 成功获取站点ID: cpe2019.sharepoint.com,39fd3083-df14-41d4-bc98-767a4e86fde7,73658833-a614-4017-ac33-c80919fb732c
+2025-04-08T21:04:15.298131+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:69 - 找到文档库: 文档
+2025-04-08T21:04:15.298734+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:69 - 找到文档库: China_Pinnacle
+2025-04-08T21:04:15.299232+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:69 - 找到文档库: HKFinance
+2025-04-08T21:04:15.299714+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:69 - 找到文档库: Sun_backup
+2025-04-08T21:04:15.300075+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:69 - 找到文档库: HK_Office_Admin
+2025-04-08T21:04:15.300410+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:69 - 找到文档库: 资料共享
+2025-04-08T21:04:15.300699+0800 - ERROR - share_point.py:upload_file_to_sharepoint_graph:75 - 未找到默认文档库
+2025-04-08T21:04:15.301140+0800 - ERROR - share_point.py:main:195 - 上传过程失败
+2025-04-08T21:07:50.368952+0800 - INFO - share_point.py:main:217 - 开始SharePoint文件上传程序
+2025-04-08T21:07:50.371638+0800 - INFO - share_point.py:main:237 - 开始上传文件 '4412813 Citron PE Limited.pdf' 到 SharePoint...
+2025-04-08T21:07:50.372091+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:163 - 准备上传文件到SharePoint: 4412813 Citron PE Limited.pdf
+2025-04-08T21:07:50.960041+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:179 - 成功获取访问令牌
+2025-04-08T21:07:50.960644+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:195 - 上传URL: https://graph.microsoft.com/v1.0/sites/cpe2019.sharepoint.com:/sites/CPEHKOffice/Shared Documents/香港分公司/Bank/eStatement/4412813 Citron PE Limited.pdf:/content
+2025-04-08T21:07:50.962431+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:199 - 上传文件大小: 111514 字节
+2025-04-08T21:07:51.491512+0800 - ERROR - share_point.py:upload_file_to_sharepoint_simple:211 - 上传失败，状态码：400, 响应：{"error":{"code":"BadRequest","message":"Resource not found for the segment 'content'.","innerError":{"date":"2025-04-08T13:07:51","request-id":"62feafb5-1cfc-482e-b09c-d7f214cea941","client-request-id":"62feafb5-1cfc-482e-b09c-d7f214cea941"}}}
+2025-04-08T21:07:51.492148+0800 - ERROR - share_point.py:main:253 - 上传过程失败
+2025-04-08T21:09:59.297476+0800 - INFO - share_point.py:main:266 - 开始SharePoint文件上传程序
+2025-04-08T21:09:59.299473+0800 - INFO - share_point.py:main:286 - 开始上传文件 '4412813 Citron PE Limited.pdf' 到 SharePoint...
+2025-04-08T21:09:59.299843+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:163 - 准备上传文件到SharePoint: 4412813 Citron PE Limited.pdf
+2025-04-08T21:09:59.872636+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:179 - 成功获取访问令牌
+2025-04-08T21:09:59.873599+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:193 - 正在获取SharePoint站点信息: CPEHKOffice
+2025-04-08T21:10:00.314032+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:204 - 成功获取站点ID: cpe2019.sharepoint.com,39fd3083-df14-41d4-bc98-767a4e86fde7,73658833-a614-4017-ac33-c80919fb732c
+2025-04-08T21:10:00.314763+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:207 - 获取站点的驱动器/文档库
+2025-04-08T21:10:00.906471+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:223 - 找到文档库: ID=b!gzD9ORTf1EG8mHZ6Tob95zOIZXMUphdArDPICRn7cyxdUv8wPTOMSpz3KaMa06Lm, 名称=文档
+2025-04-08T21:10:00.907108+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:223 - 找到文档库: ID=b!gzD9ORTf1EG8mHZ6Tob95zOIZXMUphdArDPICRn7cyyCgUdiUIoNR7OKUF_Dd3ot, 名称=China_Pinnacle
+2025-04-08T21:10:00.907517+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:223 - 找到文档库: ID=b!gzD9ORTf1EG8mHZ6Tob95zOIZXMUphdArDPICRn7cyyW-7dIaa1RTYIXsq7lJYfG, 名称=HKFinance
+2025-04-08T21:10:00.908089+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:223 - 找到文档库: ID=b!gzD9ORTf1EG8mHZ6Tob95zOIZXMUphdArDPICRn7cywpoKYbtW9sRodbtojS4Anh, 名称=Sun_backup
+2025-04-08T21:10:00.908548+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:223 - 找到文档库: ID=b!gzD9ORTf1EG8mHZ6Tob95zOIZXMUphdArDPICRn7cyy3YRfeHU3GTI3tvGVSSc3Q, 名称=HK_Office_Admin
+2025-04-08T21:10:00.908973+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:223 - 找到文档库: ID=b!gzD9ORTf1EG8mHZ6Tob95zOIZXMUphdArDPICRn7cyy8V49aMg_aQJjJzoBt1zYC, 名称=资料共享
+2025-04-08T21:10:00.909368+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:228 - 使用文档库: 文档 (ID: b!gzD9ORTf1EG8mHZ6Tob95zOIZXMUphdArDPICRn7cyxdUv8wPTOMSpz3KaMa06Lm)
+2025-04-08T21:10:00.909770+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:240 - 上传路径: sites/CPEHKOffice/Shared Documents/香港分公司/Bank/eStatement/4412813 Citron PE Limited.pdf
+2025-04-08T21:10:00.910490+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:244 - 上传URL: https://graph.microsoft.com/v1.0/drives/b!gzD9ORTf1EG8mHZ6Tob95zOIZXMUphdArDPICRn7cyxdUv8wPTOMSpz3KaMa06Lm/root:/sites/CPEHKOffice/Shared Documents/香港分公司/Bank/eStatement/4412813 Citron PE Limited.pdf:/content
+2025-04-08T21:10:00.915520+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:248 - 上传文件大小: 111514 字节
+2025-04-08T21:10:02.611054+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:257 - 文件上传成功！访问URL: https://cpe2019.sharepoint.com/sites/CPEHKOffice/Shared%20Documents/sites/CPEHKOffice/Shared%20Documents/%E9%A6%99%E6%B8%AF%E5%88%86%E5%85%AC%E5%8F%B8/Bank/eStatement/4412813%20Citron%20PE%20Limited.pdf
+2025-04-08T21:10:02.611709+0800 - INFO - share_point.py:main:301 - 上传过程成功完成
+2025-04-08T21:11:08.316261+0800 - INFO - share_point.py:main:266 - 开始SharePoint文件上传程序
+2025-04-08T21:11:08.318577+0800 - INFO - share_point.py:main:286 - 开始上传文件 '4412813 Citron PE Limited.pdf' 到 SharePoint...
+2025-04-08T21:11:08.319069+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:163 - 准备上传文件到SharePoint: 4412813 Citron PE Limited.pdf
+2025-04-08T21:11:08.866646+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:179 - 成功获取访问令牌
+2025-04-08T21:11:08.867101+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:193 - 正在获取SharePoint站点信息: CPEHKOffice
+2025-04-08T21:11:09.325483+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:204 - 成功获取站点ID: cpe2019.sharepoint.com,39fd3083-df14-41d4-bc98-767a4e86fde7,73658833-a614-4017-ac33-c80919fb732c
+2025-04-08T21:11:09.326036+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:207 - 获取站点的驱动器/文档库
+2025-04-08T21:11:09.871167+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:223 - 找到文档库: ID=b!gzD9ORTf1EG8mHZ6Tob95zOIZXMUphdArDPICRn7cyxdUv8wPTOMSpz3KaMa06Lm, 名称=文档
+2025-04-08T21:11:09.872037+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:223 - 找到文档库: ID=b!gzD9ORTf1EG8mHZ6Tob95zOIZXMUphdArDPICRn7cyyCgUdiUIoNR7OKUF_Dd3ot, 名称=China_Pinnacle
+2025-04-08T21:11:09.872716+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:223 - 找到文档库: ID=b!gzD9ORTf1EG8mHZ6Tob95zOIZXMUphdArDPICRn7cyyW-7dIaa1RTYIXsq7lJYfG, 名称=HKFinance
+2025-04-08T21:11:09.873354+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:223 - 找到文档库: ID=b!gzD9ORTf1EG8mHZ6Tob95zOIZXMUphdArDPICRn7cywpoKYbtW9sRodbtojS4Anh, 名称=Sun_backup
+2025-04-08T21:11:09.873837+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:223 - 找到文档库: ID=b!gzD9ORTf1EG8mHZ6Tob95zOIZXMUphdArDPICRn7cyy3YRfeHU3GTI3tvGVSSc3Q, 名称=HK_Office_Admin
+2025-04-08T21:11:09.874292+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:223 - 找到文档库: ID=b!gzD9ORTf1EG8mHZ6Tob95zOIZXMUphdArDPICRn7cyy8V49aMg_aQJjJzoBt1zYC, 名称=资料共享
+2025-04-08T21:11:09.874687+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:228 - 使用文档库: 文档 (ID: b!gzD9ORTf1EG8mHZ6Tob95zOIZXMUphdArDPICRn7cyxdUv8wPTOMSpz3KaMa06Lm)
+2025-04-08T21:11:09.875118+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:240 - 上传路径: 香港分公司/Bank/eStatement/4412813 Citron PE Limited.pdf
+2025-04-08T21:11:09.875480+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:244 - 上传URL: https://graph.microsoft.com/v1.0/drives/b!gzD9ORTf1EG8mHZ6Tob95zOIZXMUphdArDPICRn7cyxdUv8wPTOMSpz3KaMa06Lm/root:/香港分公司/Bank/eStatement/4412813 Citron PE Limited.pdf:/content
+2025-04-08T21:11:09.877358+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:248 - 上传文件大小: 111514 字节
+2025-04-08T21:11:10.940311+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:257 - 文件上传成功！访问URL: https://cpe2019.sharepoint.com/sites/CPEHKOffice/Shared%20Documents/%E9%A6%99%E6%B8%AF%E5%88%86%E5%85%AC%E5%8F%B8/Bank/eStatement/4412813%20Citron%20PE%20Limited.pdf
+2025-04-08T21:11:10.941830+0800 - INFO - share_point.py:main:301 - 上传过程成功完成
+2025-04-09T09:51:44.925264+0800 - INFO - share_point.py:main:266 - 开始SharePoint文件上传程序
+2025-04-09T09:51:44.933192+0800 - INFO - share_point.py:main:286 - 开始上传文件 '4412813 Citron PE Limited_test.pdf' 到 SharePoint...
+2025-04-09T09:51:44.933573+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:12 - 准备上传文件到SharePoint: ../files/4412813 Citron PE Limited.pdf
+2025-04-09T09:51:44.942532+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:20 - 开始获取Microsoft Graph API的访问令牌
+2025-04-09T09:51:45.556343+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:33 - 成功获取访问令牌
+2025-04-09T09:51:45.557789+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:42 - 正在获取SharePoint站点信息: CPEHKOffice
+2025-04-09T09:51:46.050266+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:53 - 成功获取站点ID: cpe2019.sharepoint.com,39fd3083-df14-41d4-bc98-767a4e86fde7,73658833-a614-4017-ac33-c80919fb732c
+2025-04-09T09:51:46.726332+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:69 - 找到文档库: 文档
+2025-04-09T09:51:46.727242+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:69 - 找到文档库: China_Pinnacle
+2025-04-09T09:51:46.727646+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:69 - 找到文档库: HKFinance
+2025-04-09T09:51:46.727967+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:69 - 找到文档库: Sun_backup
+2025-04-09T09:51:46.728294+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:69 - 找到文档库: HK_Office_Admin
+2025-04-09T09:51:46.728559+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:69 - 找到文档库: 资料共享
+2025-04-09T09:51:46.728857+0800 - ERROR - share_point.py:upload_file_to_sharepoint_graph:75 - 未找到默认文档库
+2025-04-09T09:51:46.729413+0800 - ERROR - share_point.py:main:303 - 上传过程失败
+2025-04-09T09:52:47.906570+0800 - INFO - share_point.py:main:266 - 开始SharePoint文件上传程序
+2025-04-09T09:52:47.908410+0800 - INFO - share_point.py:main:286 - 开始上传文件 '4412813 Citron PE Limited_test.pdf' 到 SharePoint...
+2025-04-09T09:52:47.908742+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:12 - 准备上传文件到SharePoint: ../files/4412813 Citron PE Limited.pdf
+2025-04-09T09:52:47.909140+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:20 - 开始获取Microsoft Graph API的访问令牌
+2025-04-09T09:52:48.436480+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:33 - 成功获取访问令牌
+2025-04-09T09:52:48.437275+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:42 - 正在获取SharePoint站点信息: CPEHKOffice
+2025-04-09T09:52:48.915616+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:53 - 成功获取站点ID: cpe2019.sharepoint.com,39fd3083-df14-41d4-bc98-767a4e86fde7,73658833-a614-4017-ac33-c80919fb732c
+2025-04-09T09:52:49.785954+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:69 - 找到文档库: 文档
+2025-04-09T09:52:49.786850+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:69 - 找到文档库: China_Pinnacle
+2025-04-09T09:52:49.787651+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:69 - 找到文档库: HKFinance
+2025-04-09T09:52:49.788299+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:69 - 找到文档库: Sun_backup
+2025-04-09T09:52:49.788819+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:69 - 找到文档库: HK_Office_Admin
+2025-04-09T09:52:49.789258+0800 - INFO - share_point.py:upload_file_to_sharepoint_graph:69 - 找到文档库: 资料共享
+2025-04-09T09:52:49.789709+0800 - ERROR - share_point.py:upload_file_to_sharepoint_graph:75 - 未找到默认文档库
+2025-04-09T09:52:49.790352+0800 - ERROR - share_point.py:main:303 - 上传过程失败
+2025-04-09T09:59:03.318255+0800 - INFO - share_point.py:main:266 - 开始SharePoint文件上传程序
+2025-04-09T09:59:03.322592+0800 - INFO - share_point.py:main:286 - 开始上传文件 '4412813 Citron PE Limited_test.pdf' 到 SharePoint...
+2025-04-09T09:59:03.323123+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:163 - 准备上传文件到SharePoint: 4412813 Citron PE Limited_test.pdf
+2025-04-09T09:59:03.899460+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:179 - 成功获取访问令牌
+2025-04-09T09:59:03.900072+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:193 - 正在获取SharePoint站点信息: CPEHKOffice
+2025-04-09T09:59:04.364620+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:204 - 成功获取站点ID: cpe2019.sharepoint.com,39fd3083-df14-41d4-bc98-767a4e86fde7,73658833-a614-4017-ac33-c80919fb732c
+2025-04-09T09:59:04.365327+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:207 - 获取站点的驱动器/文档库
+2025-04-09T09:59:04.955912+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:223 - 找到文档库: ID=b!gzD9ORTf1EG8mHZ6Tob95zOIZXMUphdArDPICRn7cyxdUv8wPTOMSpz3KaMa06Lm, 名称=文档
+2025-04-09T09:59:04.956400+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:223 - 找到文档库: ID=b!gzD9ORTf1EG8mHZ6Tob95zOIZXMUphdArDPICRn7cyyCgUdiUIoNR7OKUF_Dd3ot, 名称=China_Pinnacle
+2025-04-09T09:59:04.956777+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:223 - 找到文档库: ID=b!gzD9ORTf1EG8mHZ6Tob95zOIZXMUphdArDPICRn7cyyW-7dIaa1RTYIXsq7lJYfG, 名称=HKFinance
+2025-04-09T09:59:04.957128+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:223 - 找到文档库: ID=b!gzD9ORTf1EG8mHZ6Tob95zOIZXMUphdArDPICRn7cywpoKYbtW9sRodbtojS4Anh, 名称=Sun_backup
+2025-04-09T09:59:04.957465+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:223 - 找到文档库: ID=b!gzD9ORTf1EG8mHZ6Tob95zOIZXMUphdArDPICRn7cyy3YRfeHU3GTI3tvGVSSc3Q, 名称=HK_Office_Admin
+2025-04-09T09:59:04.957927+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:223 - 找到文档库: ID=b!gzD9ORTf1EG8mHZ6Tob95zOIZXMUphdArDPICRn7cyy8V49aMg_aQJjJzoBt1zYC, 名称=资料共享
+2025-04-09T09:59:04.958352+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:228 - 使用文档库: 文档 (ID: b!gzD9ORTf1EG8mHZ6Tob95zOIZXMUphdArDPICRn7cyxdUv8wPTOMSpz3KaMa06Lm)
+2025-04-09T09:59:04.958684+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:240 - 上传路径: 香港分公司/Bank/eStatement/4412813 Citron PE Limited_test.pdf
+2025-04-09T09:59:04.959099+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:244 - 上传URL: https://graph.microsoft.com/v1.0/drives/b!gzD9ORTf1EG8mHZ6Tob95zOIZXMUphdArDPICRn7cyxdUv8wPTOMSpz3KaMa06Lm/root:/香港分公司/Bank/eStatement/4412813 Citron PE Limited_test.pdf:/content
+2025-04-09T09:59:04.960907+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:248 - 上传文件大小: 111514 字节
+2025-04-09T09:59:06.387648+0800 - INFO - share_point.py:upload_file_to_sharepoint_simple:257 - 文件上传成功！访问URL: https://cpe2019.sharepoint.com/sites/CPEHKOffice/Shared%20Documents/%E9%A6%99%E6%B8%AF%E5%88%86%E5%85%AC%E5%8F%B8/Bank/eStatement/4412813%20Citron%20PE%20Limited_test.pdf
+2025-04-09T09:59:06.388543+0800 - INFO - share_point.py:main:301 - 上传过程成功完成
+2025-04-11T19:12:19.929637+0800 - INFO - filer.py:remove_pdf_password:161 - 开始处理 PDF 文件: ../files/BNYMellonSecurePDFMail_25_04_01_1624.pdf，尝试使用 1 个密码
+2025-04-11T19:12:19.970553+0800 - INFO - filer.py:remove_pdf_password:169 - 检测到 ../files/BNYMellonSecurePDFMail_25_04_01_1624.pdf 是加密文件，开始解密尝试...
+2025-04-11T19:12:19.971382+0800 - INFO - filer.py:remove_pdf_password:175 - 密码尝试 1/1: 使用 'kK91243713!' 成功解密 PDF
+2025-04-11T19:12:19.976294+0800 - ERROR - filer.py:remove_pdf_password:206 - 处理 PDF 解密时发生错误: [Errno 21] Is a directory: '../files'

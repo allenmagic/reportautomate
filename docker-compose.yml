@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  app:
+    image: ${DOCKER_IMAGE}:${DOCKER_TAG}
+    container_name: ${DOCKER_IMAGE}
+    restart: unless-stopped
+    ports:
+      - "${PORT}:${PORT}"
+    volumes:
+      - ./temp:/app/temp
+      - ./logs:/app/logs
+      - /home/user/rpa_reports/RPA_Reports/RPA:/app/rpa_reports # 挂载rpa_reports目录
+    env_file:
+      - .env
+    command: python run.py

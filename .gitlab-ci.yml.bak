@@ -1,0 +1,112 @@
+stages:
+  - deploy
+  - build
+  - release
+
+variables:
+  DOCKER_IMAGE_PROD: statement
+  DOCKER_IMAGE_DEV: statement_test
+  DOCKER_TAG: latest
+  REMOTE_SERVER: 10.11.6.50
+  REMOTE_USER: user
+  DEPLOYMENT_DIR_PROD: /home/user/opt/statement
+  DEPLOYMENT_DIR_DEV: /home/user/opt/statement_test
+  PORT_PROD: 8000
+  PORT_DEV: 8001
+
+.deploy_template: &deploy_template
+  stage: deploy
+  script:
+    - ssh $REMOTE_USER@$REMOTE_SERVER "mkdir -p $DEPLOYMENT_DIR/temp $DEPLOYMENT_DIR/logs"
+    - rsync -az --delete ./ $REMOTE_USER@$REMOTE_SERVER:$DEPLOYMENT_DIR/
+  tags:
+    - cpe
+
+.build_template: &build_template
+  stage: build
+  script:
+    - |
+      ssh $REMOTE_USER@$REMOTE_SERVER "cd $DEPLOYMENT_DIR && \
+      echo '在本地构建镜像...' && \
+      podman build -t ${DOCKER_IMAGE}:${DOCKER_TAG} . && \
+      echo '更新环境变量...' && \
+      echo 'DOCKER_IMAGE=${DOCKER_IMAGE}' > .env && \
+      echo 'DOCKER_TAG=${DOCKER_TAG}' >> .env && \
+      echo 'PORT=${PORT}' >> .env"
+  tags:
+    - cpe
+
+.release_template: &release_template
+  stage: release
+  script:
+    - |
+      ssh $REMOTE_USER@$REMOTE_SERVER "cd $DEPLOYMENT_DIR && \
+      echo '停止旧容器...' && \
+      podman-compose down || true && \
+      echo '启动新容器...' && \
+      DOCKER_IMAGE=${DOCKER_IMAGE} DOCKER_TAG=${DOCKER_TAG} PORT=${PORT} podman-compose up -d"
+  environment:
+    name: ${CI_ENVIRONMENT_NAME}
+    url: http://${REMOTE_SERVER}:${PORT}
+  tags:
+    - cpe
+
+deploy_prod:
+  <<: *deploy_template
+  variables:
+    DOCKER_IMAGE: ${DOCKER_IMAGE_PROD}
+    DEPLOYMENT_DIR: ${DEPLOYMENT_DIR_PROD}
+    PORT: ${PORT_PROD}
+  only:
+    - main
+
+build_prod:
+  <<: *build_template
+  variables:
+    DOCKER_IMAGE: ${DOCKER_IMAGE_PROD}
+    DEPLOYMENT_DIR: ${DEPLOYMENT_DIR_PROD}
+    PORT: ${PORT_PROD}
+  only:
+    - main
+
+release_prod:
+  <<: *release_template
+  variables:
+    DOCKER_IMAGE: ${DOCKER_IMAGE_PROD}
+    DEPLOYMENT_DIR: ${DEPLOYMENT_DIR_PROD}
+    PORT: ${PORT_PROD}
+  environment:
+    name: production
+    url: http://${REMOTE_SERVER}:${PORT_PROD}
+  only:
+    - main
+
+deploy_dev:
+  <<: *deploy_template
+  variables:
+    DOCKER_IMAGE: ${DOCKER_IMAGE_DEV}
+    DEPLOYMENT_DIR: ${DEPLOYMENT_DIR_DEV}
+    PORT: ${PORT_DEV}
+  only:
+    - dev
+
+build_dev:
+  <<: *build_template
+  variables:
+    DOCKER_IMAGE: ${DOCKER_IMAGE_DEV}
+    DEPLOYMENT_DIR: ${DEPLOYMENT_DIR_DEV}
+    PORT: ${PORT_DEV}
+  only:
+    - dev
+
+release_dev:
+  <<: *release_template
+  variables:
+    DOCKER_IMAGE: ${DOCKER_IMAGE_DEV}
+    DEPLOYMENT_DIR: ${DEPLOYMENT_DIR_DEV}
+    PORT: ${PORT_DEV}
+  environment:
+    name: development
+    url: http://${REMOTE_SERVER}:${PORT_DEV}
+  only:
+    - dev

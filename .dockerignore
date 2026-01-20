@@ -1,0 +1,13 @@
+.git
+.gitignore
+.venv
+env/
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+temp/
+logs/
+.Rproj.user
+.RData
+.Rhistory

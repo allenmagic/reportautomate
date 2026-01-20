@@ -1,0 +1,35 @@
+stages:
+  - deploy
+
+variables:
+  REMOTE_SERVER: 10.11.6.50
+  REMOTE_USER: user
+  DEPLOYMENT_DIR_PROD: /home/user/opt/statement
+  DEPLOYMENT_DIR_DEV: /home/user/opt/statement_test
+
+deploy-dev:
+  stage: deploy
+  script:
+    - rsync -az --delete --exclude=.git ./ $REMOTE_USER@$REMOTE_SERVER:$DEPLOYMENT_DIR_DEV/
+    - ssh $REMOTE_USER@$REMOTE_SERVER "cd $DEPLOYMENT_DIR_DEV && chmod +x server-deploy.sh && ./server-deploy.sh dev"
+  environment:
+    name: development
+    url: http://$REMOTE_SERVER:8001
+  only:
+    - dev
+  tags:
+    - cpe
+
+deploy-prod:
+  stage: deploy
+  script:
+    - rsync -az --delete --exclude=.git ./ $REMOTE_USER@$REMOTE_SERVER:$DEPLOYMENT_DIR_PROD/
+    - ssh $REMOTE_USER@$REMOTE_SERVER "cd $DEPLOYMENT_DIR_PROD && chmod +x server-deploy.sh && ./server-deploy.sh prod"
+  environment:
+    name: production
+    url: http://$REMOTE_SERVER:8000
+  only:
+    - main
+  when: manual
+  tags:
+    - cpe

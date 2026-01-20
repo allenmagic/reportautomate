@@ -1,0 +1,22 @@
+fastapi~=0.112.2
+pydantic~=2.10.3
+pydantic-settings~=2.8.1
+starlette~=0.38.2
+loguru~=0.7.2
+aiohttp~=3.11.10
+aiofiles~=22.1.0
+uvicorn~=0.32.1
+PyPDF2~=3.0.0
+msal~=1.25.0
+python-dotenv~=0.21.0
+requests~=2.32.3
+python-multipart~=0.0.6
+pikepdf~=9.7.0
+rpy2~=3.5.14
+pytest==8.3.5
+PyCryptodome==3.22.0
+pyarrow~=19.0.0
+pandas ~=2.2.3
+xlrd ~= 2.0.1
+typst ~= 0.13.7
+openpyxl ~= 3.1.5

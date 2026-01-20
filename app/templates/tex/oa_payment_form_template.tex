@@ -1,0 +1,183 @@
+\documentclass[9pt,a4paper]{extreport}
+\usepackage[UTF8]{ctex}
+\usepackage{tabularx}
+\usepackage{fontspec}
+\usepackage{ulem}
+\usepackage{makecell}
+\usepackage{adjustbox}
+\usepackage{amssymb}
+\usepackage{pifont}
+\usepackage{array}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage{datetime2}
+\usepackage[colorlinks=true,linkcolor=black,urlcolor=blue]{hyperref}
+
+\renewcommand{\ULdepth}{1.8pt}
+\renewcommand{\arraystretch}{1.2}
+\newcommand{\notefont}{\fontsize{7pt}{1\baselineskip}\selectfont}
+\newcommand{\cellfont}{\fontsize{8pt}{1\baselineskip}\selectfont}
+\newcommand{\emphisefont}{\fontsize{9pt}{1.5\baselineskip}\selectfont}
+\newcommand{\emphbold}[1]{\textbf{\cellfont #1}}
+\DTMsetdatestyle{iso}  % 设置为 ISO 格式 (YYYY-MM-DD)
+
+
+\thispagestyle{empty}
+
+% 字体设置
+\setmainfont[Path=((data["fonts_dir"])),
+             Extension=.ttf,
+             UprightFont=*regular,
+             BoldFont=*bold,
+             ItalicFont=*italic,]{arial_}
+\setCJKmainfont[Path=((data["fonts_dir"])),
+             Extension=.ttc,
+             UprightFont=*regular,
+             BoldFont=*bold,
+             ]{msyh_}
+
+
+% 设置中文断行
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip = 0pt plus 1pt minus 0.1pt
+
+% 定义页面边距的变量名称和值的参数
+\newcommand{\pagetopmargin}{1in}
+\newcommand{\pagerightmargin}{15mm}
+\newcommand{\pageleftmargin}{15mm}
+\newcommand{\pagebottommargin}{1in}
+
+% 使用参数控制页面的margin
+\usepackage[top=\pagetopmargin,
+            right=\pagerightmargin,
+            left=\pageleftmargin,
+            bottom=\pagebottommargin,
+            ]{geometry}  %%%%默认页面设置参数
+
+
+% 自定义标签列宽度，可自行调整
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\setlength{\tabcolsep}{3pt} % 控制列左右间隔，越小越贴边
+\newcommand{\longrule}{\uline{\hspace{\fill}}}
+% 自定义下划线命令
+\newcommand{\fulluline}[1]{%
+    \makebox[0pt][l]{\uline{\hspace{\linewidth}}}#1%
+}
+
+\newcommand{\colline}[1]{%
+  \makebox[0pt][l]{\uline{\hspace{0.1\columnwidth}}}#1%
+}
+
+% 定义变量
+\newcommand{\banksettled}{((data["bank_settled"]))}
+\newcommand{\chequeno}{((data["cheque_no"]))}
+\newcommand{\otherpaymethod}{}
+
+\listfiles
+
+
+\begin{document}
+%%% 报告标题，其中报告标题应该输入参数：报告类型、报告期
+\begin{center}
+\textbf{\LARGE{PAYMENT REQUESTS FORM} \\ \vspace{1mm} \LARGE{付款申请单}}
+\end{center}
+
+\vspace{8mm}
+\noindent
+\begin{tabularx}{\textwidth}{@{}l X @{\hspace{15pt}} l p{0.21\textwidth} @{}}
+COMPANY 公司:    & \fulluline{\hspace{0.25em}\textbf{((data["payer"]|elatex))}}
+& PRF No. 申请单编号: & \fulluline{\hspace{0.25em}\textbf{((data["order_id"]|elatex))}}  \\
+DEPARTMENT 部门: & \fulluline{\hspace{0.25em}\textbf{((data["department"]|elatex))}}
+& DATE 日期:         & \fulluline{\hspace{0.25em}\textbf{((data["prf_date"]))}}  \\
+PROJECT 项目:    & \fulluline{\hspace{0.25em}\textbf{((data["project_name"]|elatex))}}
+& PROJECT CODE 项号: & \fulluline{\hspace{0.25em}\textbf{((data["project_code"]|elatex))}}  \\
+\end{tabularx}
+
+\vspace{2mm}
+\noindent
+\begin{table}[h]
+\renewcommand{\arraystretch}{1.5}
+\begin{tabularx}{\textwidth}{|@{\hspace{1em}}>{\raggedright\arraybackslash}p{0.55\textwidth}|@{\hspace{1em}}p{0.18\textwidth}|@{\hspace{1em}}X|}
+\multicolumn{3}{l}{DETAILS OF PAYMENT 付款明细} \\
+\hline
+Name of Payee 收款人姓名: \newline \textbf{((data["payee"]|elatex))} & Currency 货币: \newline \textbf{((data["currency"]|elatex))} & Amount 金额: \newline \textbf{((data["amount"]))} \\
+\hline
+ \parbox[t]{0.5\textwidth}{Payment Reason 付款理由: \\[5em]  \textbf{((data["payment_reason"]|elatex))}}
+  & \multicolumn{2}{l|} {
+    \renewcommand{\arraystretch}{2}
+    \begin{tabular}[t]{p{4cm}l}  % 修改这里：使用 [t] 顶部对齐，p{4cm} 确保不换行
+    Payment Method 付款方式:  & \\
+    & \notefont{\textit{DBS Cheque No.}}  \\
+    % 第1行 Cheque
+    \ifthenelse{\equal{\banksettled}{Cheque}}%
+        {\ding{51}\phantom{xx}Cheque 支票  & \colline{\notefont\textit\chequeno} \\}%
+        {$\Box$\phantom{xx}Cheque 支票  & \colline \\}
+    % 第2行 Online
+    \ifthenelse{\equal{\banksettled}{Online}}%
+        {\ding{51}\phantom{xx}Online 网上 & \\}
+        {$\Box$\phantom{xx}Online 网上 & \\}
+    % 第3行 Others
+    \ifthenelse{\equal{\banksettled}{Others}}%
+    {\ding{51}\phantom{xx}Others 其它 & \colline{\notefont\textit\otherpaymethod} \\}
+    {$\Box$\phantom{xx}Others 其它 & \colline \\}
+    \vspace{1em}
+    \end{tabular}
+} \\
+\hline
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}[t]{p{0.5\textwidth}}  % 修改这里：使用 p{width} 替代 l
+  Supporting Document Attached 附上支持文件: \\
+  (% for attachment in data["attachments"] %)
+  (% if attachment|elatex %)
+  \emphbold{((attachment|elatex))}(% if not loop.last %) \\(% endif %)
+  (% else %)
+  (% endif %)
+  (% endfor %)
+  (% if not data["attachments"] %)
+  (% endif %)
+\end{tabular}
+ & \multicolumn{2}{l|}{
+ \renewcommand{\arraystretch}{1.1}
+  \begin{tabular}[t]{p{0.3\textwidth}}  % 添加 [t] 参数，并使用 p{width}
+  Payment Date 付款日期： \\
+  \textbf{((data["prf_date"]))} \\
+  \phantom{xx}
+  \end{tabular}
+} \\
+\hline
+\end{tabularx}
+\end{table}
+
+% APPROVAL 审批部分
+\vspace{2mm}
+\noindent
+\begin{table}[h]
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+\newcommand{\signbox}{\rule{0pt}{50pt}} % 签名框高度
+\newcommand{\datetext}[1]{{\raggedright\notefont{#1}}} % 日期文 字格式
+\newcommand{\dateformatf}[1]{\multicolumn{1}{|l|}{\notefont{#1}}}
+\newcommand{\dateformat}[1]{\multicolumn{1}{l|}{\notefont{#1}}}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\textwidth}{|Y|Y|Y|Y|Y|}
+\multicolumn{5}{l}{APPROVAL 审批} \\
+\hline
+Initiator & Reviewed By & Department & Finance & Group CFO \\
+经办人 & 财务审阅 & 部门负责人 & 财务负责人 & 首席财务官 \\
+\hline
+\signbox & \signbox & \signbox & \signbox & \signbox \\
+\dateformatf{Date 日期：\DTMtoday} & \dateformat{Date 日期：} & \dateformat{Date 日期：} & \dateformat{Date 日期：} & \dateformat{Date 日期：}  \\
+\hline
+\end{tabularx}
+\end{table}
+
+% OA申请单号
+\vspace{2mm}
+    \noindent
+\begin{tabularx}{\textwidth}{|@{\hspace{1em}}>{\raggedright\arraybackslash}p{0.2\textwidth}|@{\hspace{1em}}>{\raggedright\arraybackslash}X|}
+    \multicolumn{2}{l}{OA申请单号} \\
+    \hline
+    OA申请单号: & \href{((data["oa_url"]|elatex))}{((data["oa_no"]|elatex))} \\
+    \hline
+\end{tabularx}
+
+\end{document}

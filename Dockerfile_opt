@@ -1,0 +1,95 @@
+# ----------------------------------------------------
+# 阶段 1: 构建阶段 (Builder Stage)
+# 作用: 安装系统依赖、编译或下载工具、安装所有应用依赖
+# 使用: python:3.12 作为基础镜像，保证编译环境完整
+# ----------------------------------------------------
+FROM docker.io/library/python:3.12 AS builder
+
+WORKDIR /app
+
+# 设置环境变量，TZ 和 DEBIAN_FRONTEND 在构建阶段也需要
+ENV TZ=Asia/Shanghai \
+    DEBIAN_FRONTEND=noninteractive
+
+# 1. 安装系统依赖 (包括 build-essential, R, curl, libmariadb-dev-compat)
+# 注意: 这一步下载量最大，是导致构建镜像大的主要原因之一
+RUN echo "=== 安装系统依赖 ===" && \
+    apt-get update && apt-get install -y --no-install-recommends \
+    # 基础编译和运行时依赖
+    build-essential p7zip-full libmariadb-dev-compat \
+    # R 语言环境
+    r-base r-base-dev r-cran-readxl r-cran-dplyr \
+    r-cran-jsonlite r-cran-tidyverse r-cran-readr \
+    # 下载工具
+    curl ca-certificates \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# 2. 安装 Typst (x86_64 架构) - 使用构建阶段的环境
+RUN echo "=== 安装 Typst ===" && \
+    TYPST_VERSION="0.14.0" && \
+    curl -fsSL "https://github.com/typst/typst/releases/download/v${TYPST_VERSION}/typst-x86_64-unknown-linux-musl.tar.xz" -o /tmp/typst.tar.xz && \
+    tar -xJf /tmp/typst.tar.xz -C /tmp && \
+    mv /tmp/typst-x86_64-unknown-linux-musl/typst /usr/local/bin/typst && \
+    chmod +x /usr/local/bin/typst && \
+    rm -rf /tmp/typst* && \
+    typst --version && \
+    echo "✓ Typst 安装成功"
+
+# 3. 安装 Python 依赖
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# 4. 安装 R 包，使用清华大学 CRAN 镜像加速
+RUN Rscript -e 'install.packages(c("RMySQL","feather"), repos="https://mirrors.tuna.tsinghua.edu.cn/CRAN/")'
+
+
+# ----------------------------------------------------
+# 阶段 2: 最终运行阶段 (Final Stage)
+# 作用: 只包含运行应用所需的最小依赖和文件
+# 使用: python:3.12-slim 仅包含运行时必需的 OS 和 Python 文件
+# ----------------------------------------------------
+# 注意: 这里的 slim 镜像仍然需要安装R的运行时依赖
+FROM gcr.io/distroless/python3-debian12:nonroot AS final
+
+WORKDIR /app
+
+# 设置运行时环境变量
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    TZ=Asia/Shanghai \
+    APP_HOST=0.0.0.0
+
+# 1. 安装最终运行所需的系统依赖 (主要是R的运行时环境，无需 build-essential)
+# 如果发现 slim 缺少某些运行时库 (如 libmariadbclient)，需要在这里补装。
+RUN echo "=== 安装运行时系统依赖 (R 运行时等) ===" && \
+    apt-get update && apt-get install -y --no-install-recommends \
+    # R 运行时和必要的库
+    r-base \
+    # Typst 依赖 ( musl 版本通常无需过多 GLIBC 依赖，但 fontconfig 是必需的)
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# 2. 从 builder 阶段复制所需文件
+# 2.1 复制 Typst 二进制文件
+COPY --from=builder /usr/local/bin/typst /usr/local/bin/typst
+# 2.2 复制 Python 依赖 (site-packages)
+COPY --from=builder /usr/local/lib/python3.12/site-packages /usr/local/lib/python3.12/site-packages
+# 2.3 复制 R 语言包 (如果 R 包安装在默认位置，其路径可能类似下面)
+COPY --from=builder /usr/lib/R /usr/lib/R
+COPY --from=builder /usr/local/lib/R/site-library /usr/local/lib/R/site-library
+
+# 3. 复制字体文件并更新缓存
+RUN mkdir -p /usr/share/fonts/custom
+COPY resources/fonts/*.ttf /usr/share/fonts/custom/
+COPY resources/fonts/*.ttc /usr/share/fonts/custom/
+RUN echo "=== 验证字体文件 ===" && \
+    ls -lh /usr/share/fonts/custom/ && \
+    echo "✓ 字体文件复制成功"
+
+# 4. 复制应用代码
+COPY . .
+
+# 5. 创建必要目录
+RUN mkdir -p /app/temp /app/logs /app/rpa_reports
+
+EXPOSE 8000
+CMD ["python", "run.py"]
